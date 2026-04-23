@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane fx:id="rootPane"
+            prefWidth="960" prefHeight="640"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #162535 0%, #0c1420 100%);"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Luxora.Luxora.AdminLoginController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" style="-fx-padding: 16 36;">
+            <Button text="&#8592; Back"
+                    style="-fx-background-color: transparent; -fx-text-fill: #94a3b8;
+                           -fx-font-size: 13; -fx-cursor: hand;
+                           -fx-border-color: #2d4057; -fx-border-radius: 6;
+                           -fx-background-radius: 6; -fx-padding: 5 14;"
+                    onAction="#goBack"/>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+            <VBox alignment="CENTER" spacing="12" maxWidth="440">
+
+                <!-- Admin icon: dark circle with "A" on white bg -->
+                <Label text="A"
+                       style="-fx-background-color: white; -fx-background-radius: 100;
+                              -fx-min-width: 64; -fx-min-height: 64;
+                              -fx-max-width: 64; -fx-max-height: 64;
+                              -fx-alignment: center; -fx-font-size: 26;
+                              -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+
+                <Label text="Admin Login"
+                       style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+                <Label text="Authorized staff access only"
+                       style="-fx-text-fill: #94a3b8; -fx-font-size: 13;"/>
+
+                <Region prefHeight="4"/>
+
+                <!-- Card -->
+                <VBox spacing="12" maxWidth="Infinity"
+                      style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-padding: 28 28;
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 22, 0, 0, 8);">
+
+                    <Label text="Login"
+                           style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+
+                    <Region prefHeight="2"/>
+
+                    <Label text="Email Address"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #374151;"/>
+                    <HBox prefHeight="40" alignment="CENTER_LEFT"
+                          style="-fx-background-color: #f1f5f9; -fx-background-radius: 8;">
+                        <Label fx:id="emailIconLabel" text=""
+                               style="-fx-padding: 0 10 0 12;"/>
+                        <TextField fx:id="emailField" promptText="Enter your email address"
+                                   HBox.hgrow="ALWAYS"
+                                   style="-fx-background-color: transparent; -fx-border-color: transparent;
+                                          -fx-focus-color: transparent; -fx-faint-focus-color: transparent;
+                                          -fx-font-size: 13; -fx-text-fill: #1e293b;"/>
+                    </HBox>
+
+                    <Label text="Password"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #374151;"/>
+                    <HBox fx:id="passwordBox" prefHeight="40" alignment="CENTER_LEFT"
+                          style="-fx-background-color: #f1f5f9; -fx-background-radius: 8;">
+                        <Label fx:id="passwordIconLabel" text=""
+                               style="-fx-padding: 0 10 0 12;"/>
+                        <PasswordField fx:id="passwordField" promptText="Enter your password"
+                                       HBox.hgrow="ALWAYS"
+                                       style="-fx-background-color: transparent; -fx-border-color: transparent;
+                                              -fx-focus-color: transparent; -fx-faint-focus-color: transparent;
+                                              -fx-font-size: 13; -fx-text-fill: #1e293b;"/>
+                        <TextField fx:id="passwordVisibleField" promptText="Enter your password"
+                                   HBox.hgrow="ALWAYS" visible="false" managed="false"
+                                   style="-fx-background-color: transparent; -fx-border-color: transparent;
+                                          -fx-focus-color: transparent; -fx-faint-focus-color: transparent;
+                                          -fx-font-size: 13; -fx-text-fill: #1e293b;"/>
+                        <Button fx:id="eyeToggleBtn" onAction="#handleEyeToggle"
+                                style="-fx-background-color: transparent; -fx-cursor: hand;
+                                       -fx-padding: 0 12 0 8;"/>
+                    </HBox>
+
+                    <Region prefHeight="4"/>
+
+                    <Button text="Sign In" prefHeight="40" maxWidth="Infinity"
+                            style="-fx-background-color: #0f172a; -fx-text-fill: white;
+                                   -fx-font-size: 14; -fx-font-weight: bold;
+                                   -fx-background-radius: 8; -fx-cursor: hand;"
+                            onAction="#handleLogin"/>
+
+                    <Label fx:id="messageLabel" text=""
+                           style="-fx-font-size: 12;" maxWidth="Infinity"
+                           wrapText="true" alignment="CENTER" textAlignment="CENTER"/>
+
+                    <!-- Restricted notice -->
+                    <HBox alignment="CENTER">
+                        <Label text="This portal is restricted to authorized staff only."
+                               style="-fx-font-size: 11; -fx-text-fill: #94a3b8;"
+                               wrapText="true" maxWidth="320"
+                               alignment="CENTER" textAlignment="CENTER"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </center>
+
+    <bottom>
+        <HBox prefHeight="44" alignment="CENTER">
+            <Label text="&#169; 2026 Luxora. All rights reserved."
+                   style="-fx-text-fill: #64748b; -fx-font-size: 12;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

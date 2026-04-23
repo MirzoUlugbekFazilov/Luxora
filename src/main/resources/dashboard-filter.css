@@ -1,0 +1,22 @@
+/* ── ComboBox: override macOS gray arrow-button ───────────────────── */
+.combo-box-base {
+    -fx-background-color: white;
+    -fx-border-color: #e6e6e6;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+.combo-box-base .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 10 0 4;
+}
+.combo-box-base .arrow {
+    -fx-background-color: #717182;
+    -fx-padding: 3;
+}
+.combo-box-base > .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 10;
+    -fx-font-size: 12px;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #030213;
+}

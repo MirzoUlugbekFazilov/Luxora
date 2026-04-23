@@ -1,0 +1,62 @@
+/* ── Column headers: no vertical dividers ─────────────────────────── */
+.table-view {
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .column-header-background {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+.table-view .column-header {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+.table-view .column-header .label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #030213;
+    -fx-font-weight: normal;
+    -fx-font-family: 'Poppins';
+    -fx-padding: 0 4 0 4;
+    -fx-alignment: center;
+}
+/* ── No vertical cell borders ─────────────────────────────────────── */
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+.table-view .filler {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+/* Bottom border under the entire header row */
+.table-view .table-header-row {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e6e6e6 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ── Empty rows: fully invisible ──────────────────────────────────── */
+.table-view .table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.table-view .table-row-cell:empty .table-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* ── Remove focus ring ────────────────────────────────────────────── */
+.table-view:focused {
+    -fx-background-insets: 0;
+}
+.table-view .table-row-cell:selected,
+.table-view:focused .table-row-cell:selected {
+    -fx-background-color: #e9ebef;
+    -fx-border-color: transparent transparent #e6e6e6 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ── Sort arrow tint ──────────────────────────────────────────────── */
+.table-view .column-header .arrow {
+    -fx-background-color: #717182;
+}

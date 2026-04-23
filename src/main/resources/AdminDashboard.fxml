@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane fx:id="rootPane"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Luxora.Luxora.AdminDashboardController"
+            style="-fx-background-color: #f0f4f8;">
+
+    <!-- ═══ LEFT SIDEBAR ════════════════════════════════════════════════════ -->
+    <left>
+        <VBox prefWidth="220"
+              style="-fx-background-color: white;
+                     -fx-border-color: #e6e6e6; -fx-border-width: 0 1 0 0;
+                     -fx-min-height: 500;">
+
+            <!-- Brand -->
+            <HBox prefHeight="68" alignment="CENTER_LEFT" style="-fx-padding: 0 24;">
+                <Label text="Luxora"
+                       style="-fx-font-size: 20; -fx-font-weight: bold;
+                              -fx-font-family: Poppins; -fx-text-fill: #030213;"/>
+            </HBox>
+
+            <Separator style="-fx-background-color: #e6e6e6;"/>
+
+            <!-- Navigation -->
+            <VBox spacing="4" style="-fx-padding: 16 12;">
+
+                <HBox fx:id="navDashboard" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #ececf0; -fx-background-radius: 8;
+                             -fx-padding: 0 12; -fx-cursor: hand;
+                             -fx-border-color: #030213 transparent transparent transparent;
+                             -fx-border-width: 0 0 0 3;">
+                    <Label fx:id="navDashboardLabel" text="Dashboard"
+                           style="-fx-font-size: 13; -fx-text-fill: #030213; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navExport" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navExportLabel" text="Export"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navImport" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navImportLabel" text="Import"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navUsers" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navUsersLabel" text="Users"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navOrders" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navOrdersLabel" text="Orders"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navLogistics" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navLogisticsLabel" text="Logistics"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navInventory" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navInventoryLabel" text="Inventory"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navReviews" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navReviewsLabel" text="Reviews"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+                <HBox fx:id="navProfile" prefHeight="42" alignment="CENTER_LEFT"
+                      style="-fx-background-color: transparent; -fx-background-radius: 8;
+                             -fx-padding: 0 15; -fx-cursor: hand;">
+                    <Label fx:id="navProfileLabel" text="Profile"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182; -fx-font-weight: bold; -fx-font-family: Poppins;"/>
+                </HBox>
+
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Log out -->
+            <VBox style="-fx-padding: 4 12 46 12;">
+                <Button text="Log out" onAction="#handleLogout"
+                        maxWidth="Infinity" prefHeight="42"
+                        style="-fx-background-color: transparent; -fx-text-fill: #d4183d;
+                               -fx-font-size: 13; -fx-font-weight: bold; -fx-font-family: Poppins;
+                               -fx-cursor: hand; -fx-padding: 0 15; -fx-alignment: CENTER_LEFT;
+                               -fx-background-radius: 8;"/>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- ═══ CENTER CONTENT ══════════════════════════════════════════════════ -->
+    <center>
+        <StackPane style="-fx-background-color: #f0f4f8;">
+
+            <!-- ── Dashboard Section ────────────────────────────────────── -->
+            <VBox fx:id="dashboardSection" spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Product Management"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="Manage your product catalogue"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Button fx:id="refreshBtn" onAction="#handleRefresh"
+                                style="-fx-background-color: white; -fx-text-fill: #030213;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                       -fx-background-radius: 8; -fx-padding: 10 16; -fx-cursor: hand;"/>
+                        <Button text="+ Add Product" onAction="#handleAddProduct"
+                                style="-fx-background-color: #030213; -fx-text-fill: white;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-padding: 10 22; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                </HBox>
+
+                <!-- Inline error banner for product operations — shown/hidden programmatically -->
+                <Label fx:id="dashboardErrorLabel" visible="false" managed="false" wrapText="true"
+                       maxWidth="Infinity"
+                       style="-fx-background-color: #fef2f2; -fx-text-fill: #b91c1c;
+                              -fx-background-radius: 8; -fx-padding: 12 16;
+                              -fx-border-color: #fecaca; -fx-border-radius: 8; -fx-font-size: 13;"/>
+
+                <!-- Filter card -->
+                <VBox spacing="0" style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);
+                             -fx-padding: 24 24 0 24;">
+                    <!-- Row 1: filter inputs -->
+                    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 0 0 16 0;">
+                        <StackPane prefHeight="38" HBox.hgrow="ALWAYS">
+                            <TextField fx:id="searchField" promptText="Search products..."
+                                       maxWidth="Infinity" prefHeight="38"
+                                       style="-fx-background-color: white; -fx-background-radius: 8;
+                                              -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                              -fx-padding: 0 12 0 32; -fx-font-size: 12; -fx-font-family: Poppins;"/>
+                            <Label text="🔍"
+                                   style="-fx-text-fill: #9ca3af; -fx-font-size: 12; -fx-padding: 0 0 0 10;"
+                                   StackPane.alignment="CENTER_LEFT"/>
+                        </StackPane>
+                        <Button fx:id="categoryFilterBtn"
+                                prefWidth="196" prefHeight="38"
+                                text="All Categories"
+                                style="-fx-background-color: white; -fx-background-radius: 8;
+                                       -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                       -fx-font-size: 12; -fx-font-family: Poppins; -fx-text-fill: #030213;
+                                       -fx-cursor: hand; -fx-padding: 0 14; -fx-alignment: CENTER_LEFT;"/>
+                        <ComboBox fx:id="statusFilter" promptText="All Status"
+                                  prefWidth="160" prefHeight="38"
+                                  style="-fx-background-radius: 8; -fx-font-size: 12;"/>
+                        <TextField fx:id="minPriceField" promptText="Min $"
+                                   prefWidth="86" prefHeight="38"
+                                   style="-fx-background-color: white; -fx-background-radius: 8;
+                                          -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                          -fx-padding: 0 10; -fx-font-size: 12; -fx-font-family: Poppins;"/>
+                        <TextField fx:id="maxPriceField" promptText="Max $"
+                                   prefWidth="86" prefHeight="38"
+                                   style="-fx-background-color: white; -fx-background-radius: 8;
+                                          -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                          -fx-padding: 0 10; -fx-font-size: 12; -fx-font-family: Poppins;"/>
+                    </HBox>
+                    <!-- Separator -->
+                    <Separator/>
+                    <!-- Row 2: Clear Filters button right-aligned -->
+                    <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10 0 14 0;">
+                        <Button text="Clear Filters" onAction="#handleClearFilters"
+                                style="-fx-background-color: transparent; -fx-text-fill: #717182;
+                                       -fx-font-size: 12; -fx-font-weight: bold; -fx-font-family: Poppins;
+                                       -fx-cursor: hand; -fx-padding: 4 8;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Product table card -->
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <TableView fx:id="productTable" VBox.vgrow="ALWAYS" fixedCellSize="64"
+                               style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                      -fx-table-cell-border-color: transparent;">
+                        <columns>
+                            <TableColumn fx:id="colImage"    text="Image"      prefWidth="68"  minWidth="60"/>
+                            <TableColumn fx:id="colName"     text="Name"       prefWidth="170" minWidth="130"/>
+                            <TableColumn fx:id="colCategory" text="Categories" prefWidth="340" minWidth="200"/>
+                            <TableColumn fx:id="colPrice"    text="Price"      prefWidth="90"  minWidth="70"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colStock"    text="Stock"      prefWidth="68"  minWidth="55"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colStatus"   text="Status"     prefWidth="110" minWidth="85"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colActions"  text="Actions"    prefWidth="100" minWidth="90"  style="-fx-alignment: CENTER;"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No products yet. Click &quot;+ Add Product&quot; to get started."
+                                   style="-fx-text-fill: #717182; -fx-font-size: 13;"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Export Section ───────────────────────────────────────── -->
+            <VBox fx:id="exportSection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Export Products"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="Select products and download as CSV or XLSX"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="10">
+                        <Button text="Export CSV" onAction="#handleExportCSV"
+                                style="-fx-background-color: white; -fx-text-fill: #030213;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                       -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                        <Button text="Export XLSX" onAction="#handleExportXLSX"
+                                style="-fx-background-color: #030213; -fx-text-fill: white;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                </HBox>
+
+                <!-- Selection toolbar -->
+                <HBox spacing="10" alignment="CENTER_LEFT"
+                      style="-fx-background-color: white; -fx-background-radius: 10;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 10;
+                             -fx-padding: 14 20;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <Button text="Select All" onAction="#handleSelectAll"
+                            style="-fx-background-color: #f3f4f6; -fx-text-fill: #030213;
+                                   -fx-font-size: 12; -fx-font-weight: bold;
+                                   -fx-background-radius: 6; -fx-padding: 7 14; -fx-cursor: hand;"/>
+                    <Button text="Deselect All" onAction="#handleDeselectAll"
+                            style="-fx-background-color: transparent; -fx-text-fill: #717182;
+                                   -fx-font-size: 12; -fx-font-weight: bold;
+                                   -fx-background-radius: 6; -fx-padding: 7 14; -fx-cursor: hand;"/>
+                    <Separator orientation="VERTICAL"/>
+                    <Label fx:id="exportCountLabel" text="0 products selected"
+                           style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="exportStatusLabel" text=""
+                           style="-fx-font-size: 12; -fx-text-fill: #16a34a;"/>
+                </HBox>
+
+                <!-- Export table card -->
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <TableView fx:id="exportTable" VBox.vgrow="ALWAYS" fixedCellSize="56" editable="true"
+                               style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                      -fx-table-cell-border-color: transparent;">
+                        <columns>
+                            <TableColumn fx:id="colExportSelect"   text=""           prefWidth="44"  minWidth="44"  maxWidth="44"/>
+                            <TableColumn fx:id="colExportName"     text="Name"       prefWidth="210" minWidth="150"/>
+                            <TableColumn fx:id="colExportCategory" text="Categories" prefWidth="250" minWidth="160"/>
+                            <TableColumn fx:id="colExportPrice"    text="Price"      prefWidth="90"  minWidth="70"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colExportStock"    text="Stock"      prefWidth="70"  minWidth="55"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colExportStatus"   text="Status"     prefWidth="100" minWidth="80"  style="-fx-alignment: CENTER;"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No products available for export."
+                                   style="-fx-text-fill: #717182; -fx-font-size: 13;"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Import Section ───────────────────────────────────────── -->
+            <VBox fx:id="importSection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <!-- Header -->
+                <VBox spacing="4">
+                    <Label text="Import Products"
+                           style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                    <Label text="Bulk-add products to the catalogue from a CSV or XLSX file"
+                           style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                </VBox>
+
+                <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true"
+                            style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-width: 0;">
+                    <VBox spacing="16" style="-fx-padding: 0 4 0 0;">
+
+                        <!-- Instructions card -->
+                        <VBox spacing="16"
+                              style="-fx-background-color: white; -fx-background-radius: 14;
+                                     -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);
+                                     -fx-padding: 26 28;">
+
+                            <Label text="How to Import"
+                                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+
+                            <!-- Numbered steps -->
+                            <VBox spacing="14">
+                                <HBox spacing="14" alignment="TOP_LEFT">
+                                    <Label text="1"
+                                           style="-fx-background-color: #030213; -fx-text-fill: white;
+                                                  -fx-font-size: 11; -fx-font-weight: bold; -fx-alignment: center;
+                                                  -fx-min-width: 24; -fx-min-height: 24; -fx-max-width: 24; -fx-max-height: 24;
+                                                  -fx-background-radius: 12;"/>
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label text="Prepare your spreadsheet"
+                                               style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                        <Label text="Create a CSV (.csv) or Excel (.xlsx) file with exactly the six columns shown in the format guide below. Row 1 must be the header row."
+                                               style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                    </VBox>
+                                </HBox>
+                                <HBox spacing="14" alignment="TOP_LEFT">
+                                    <Label text="2"
+                                           style="-fx-background-color: #030213; -fx-text-fill: white;
+                                                  -fx-font-size: 11; -fx-font-weight: bold; -fx-alignment: center;
+                                                  -fx-min-width: 24; -fx-min-height: 24; -fx-max-width: 24; -fx-max-height: 24;
+                                                  -fx-background-radius: 12;"/>
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label text="Upload the file"
+                                               style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                        <Label text="Click the upload area below to browse for your file, or drag and drop it directly onto the zone."
+                                               style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                    </VBox>
+                                </HBox>
+                                <HBox spacing="14" alignment="TOP_LEFT">
+                                    <Label text="3"
+                                           style="-fx-background-color: #030213; -fx-text-fill: white;
+                                                  -fx-font-size: 11; -fx-font-weight: bold; -fx-alignment: center;
+                                                  -fx-min-width: 24; -fx-min-height: 24; -fx-max-width: 24; -fx-max-height: 24;
+                                                  -fx-background-radius: 12;"/>
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label text="Review the results"
+                                               style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                        <Label text="The system will report how many products were added and highlight any rows that were skipped due to errors."
+                                               style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+
+                            <Separator/>
+
+                            <!-- Column format guide -->
+                            <Label text="Required File Format"
+                                   style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+
+                            <VBox style="-fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                         -fx-background-radius: 8; -fx-border-width: 1;">
+                                <!-- Header row -->
+                                <HBox style="-fx-background-color: #f8fafc; -fx-background-radius: 8 8 0 0;
+                                             -fx-padding: 10 16; -fx-border-color: transparent transparent #e6e6e6 transparent;
+                                             -fx-border-width: 0 0 1 0;">
+                                    <Label text="A   Name"          prefWidth="150" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                    <Label text="B   Categories"    prefWidth="170" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                    <Label text="C   Description"   prefWidth="170" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                    <Label text="D   Price ($)"     prefWidth="100" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                    <Label text="E   Stock"         prefWidth="80"  style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                    <Label text="F   Status"        prefWidth="100" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                </HBox>
+                                <!-- Example row -->
+                                <HBox style="-fx-padding: 10 16;">
+                                    <Label text="Jeans"             prefWidth="150" style="-fx-font-size: 11; -fx-text-fill: #717182;"/>
+                                    <Label text="Clothes, Fashion"  prefWidth="170" style="-fx-font-size: 11; -fx-text-fill: #717182;"/>
+                                    <Label text="A quality jeans"   prefWidth="170" style="-fx-font-size: 11; -fx-text-fill: #717182;"/>
+                                    <Label text="120"               prefWidth="100" style="-fx-font-size: 11; -fx-text-fill: #717182;"/>
+                                    <Label text="45"                prefWidth="80"  style="-fx-font-size: 11; -fx-text-fill: #717182;"/>
+                                    <Label text="active"            prefWidth="100" style="-fx-font-size: 11; -fx-text-fill: #717182;"/>
+                                </HBox>
+                            </VBox>
+
+                            <!-- Notes -->
+                            <VBox spacing="6"
+                                  style="-fx-background-color: #f8fafc; -fx-background-radius: 8; -fx-padding: 14 16;">
+                                <Label text="Notes"
+                                       style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                                <Label text="• Row 1 must be the header row — it is skipped automatically during import."
+                                       style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                <Label text="• Categories: separate multiple values with a comma, e.g.  Electronics, Fashion."
+                                       style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                <Label text="• Status must be &quot;active&quot; or &quot;inactive&quot;. Blank or unrecognised values default to active."
+                                       style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                <Label text="• Price and Stock must be numeric. Rows with invalid values will be skipped."
+                                       style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                                <Label text="• Product images cannot be imported from a file and must be added manually afterwards."
+                                       style="-fx-font-size: 12; -fx-text-fill: #717182;" wrapText="true"/>
+                            </VBox>
+
+                        </VBox>
+
+                        <!-- Upload card -->
+                        <VBox spacing="14"
+                              style="-fx-background-color: white; -fx-background-radius: 14;
+                                     -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);
+                                     -fx-padding: 26 28;">
+
+                            <Label text="Upload File"
+                                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+
+                            <!-- Drop / click zone -->
+                            <VBox fx:id="importDropZone" alignment="CENTER" spacing="8" prefHeight="130"
+                                  style="-fx-border-color: #d1d5db; -fx-border-style: dashed;
+                                         -fx-border-width: 2; -fx-border-radius: 10;
+                                         -fx-background-color: white; -fx-background-radius: 10;
+                                         -fx-cursor: hand; -fx-padding: 20;">
+                                <Label text="⬆" style="-fx-font-size: 30; -fx-text-fill: #9ca3af;"/>
+                                <Label text="Click to browse, or drag and drop a file here"
+                                       style="-fx-font-size: 13; -fx-text-fill: #6b7280;"/>
+                                <Label text="Supported formats:  .csv    .xlsx"
+                                       style="-fx-font-size: 11; -fx-text-fill: #9ca3af;"/>
+                            </VBox>
+
+                            <!-- Results area (populated programmatically) -->
+                            <VBox fx:id="importResultsBox" spacing="10" visible="false" managed="false"/>
+
+                        </VBox>
+
+                    </VBox>
+                </ScrollPane>
+
+            </VBox>
+
+            <!-- ── Users Section ────────────────────────────────────────── -->
+            <VBox fx:id="usersSection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="User Management"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="View, edit, and delete user accounts"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Inline error banner for user operations — shown/hidden programmatically -->
+                <Label fx:id="usersErrorLabel" visible="false" managed="false" wrapText="true"
+                       maxWidth="Infinity"
+                       style="-fx-background-color: #fef2f2; -fx-text-fill: #b91c1c;
+                              -fx-background-radius: 8; -fx-padding: 12 16;
+                              -fx-border-color: #fecaca; -fx-border-radius: 8; -fx-font-size: 13;"/>
+
+                <!-- Users table card -->
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS" fixedCellSize="56"
+                               style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                      -fx-table-cell-border-color: transparent;">
+                        <columns>
+                            <TableColumn fx:id="colUserName"    text="Name"    prefWidth="230" minWidth="140"/>
+                            <TableColumn fx:id="colUserEmail"   text="Email"   prefWidth="310" minWidth="180"/>
+                            <TableColumn fx:id="colUserRole"    text="Role"    prefWidth="170" minWidth="110" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colUserActions" text="Actions" prefWidth="110" minWidth="90"  style="-fx-alignment: CENTER;"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No users found."
+                                   style="-fx-text-fill: #717182; -fx-font-size: 13;"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Orders Section ───────────────────────────────────────── -->
+            <VBox fx:id="ordersSection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Customer Orders"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="View and manage all orders placed by customers"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="12" alignment="CENTER_RIGHT">
+                        <ComboBox fx:id="adminOrderStatusFilter" promptText="All Statuses"
+                                  prefWidth="160" prefHeight="34"
+                                  style="-fx-background-radius: 8; -fx-font-size: 12; -fx-font-family: Poppins;"/>
+                        <Label fx:id="adminOrderCountLabel" text=""
+                               style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                    </HBox>
+                </HBox>
+
+                <!-- Inline error label -->
+                <Label fx:id="ordersErrorLabel" visible="false" managed="false" wrapText="true"
+                       maxWidth="Infinity"
+                       style="-fx-background-color: #fef2f2; -fx-text-fill: #b91c1c;
+                              -fx-background-radius: 8; -fx-padding: 12 16;
+                              -fx-border-color: #fecaca; -fx-border-radius: 8; -fx-font-size: 13;"/>
+
+                <!-- Orders table card -->
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <TableView fx:id="adminOrdersTable" VBox.vgrow="ALWAYS" fixedCellSize="64"
+                               style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                      -fx-table-cell-border-color: transparent;">
+                        <columns>
+                            <TableColumn fx:id="colAdmOrderCode"    text="Order #"   prefWidth="110" minWidth="90"/>
+                            <TableColumn fx:id="colAdmOrderDate"    text="Date"      prefWidth="110" minWidth="90"/>
+                            <TableColumn fx:id="colAdmOrderEmail"   text="Customer"  prefWidth="190" minWidth="140"/>
+                            <TableColumn fx:id="colAdmOrderItems"   text="Items"     prefWidth="60"  minWidth="50"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colAdmOrderTotal"   text="Total"     prefWidth="90"  minWidth="75"  style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colAdmOrderStatus"  text="Status"    prefWidth="130" minWidth="105" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colAdmOrderActions" text="Actions"   prefWidth="160" minWidth="130" style="-fx-alignment: CENTER;"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No orders placed yet."
+                                   style="-fx-text-fill: #717182; -fx-font-size: 13;"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Logistics Section ────────────────────────────────────── -->
+            <VBox fx:id="logisticsSection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Delivery &amp; Logistics"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="Manage deliveries, assign drivers and track shipments"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Button fx:id="refreshDeliveryBtn" onAction="#handleRefreshDeliveries"
+                                style="-fx-background-color: white; -fx-text-fill: #030213;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                       -fx-background-radius: 8; -fx-padding: 10 16; -fx-cursor: hand;"/>
+                        <Button text="▶ Simulate" onAction="#handleSimulateDeliveries"
+                                style="-fx-background-color: white; -fx-text-fill: #1e40af;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-border-color: #dbeafe; -fx-border-radius: 8;
+                                       -fx-background-radius: 8; -fx-padding: 10 16; -fx-cursor: hand;"/>
+                        <Button text="+ Create Delivery" onAction="#handleCreateDelivery"
+                                style="-fx-background-color: #030213; -fx-text-fill: white;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-padding: 10 22; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                </HBox>
+
+                <!-- Inline error for logistics -->
+                <Label fx:id="logisticsErrorLabel" visible="false" managed="false" wrapText="true"
+                       maxWidth="Infinity"
+                       style="-fx-background-color: #fef2f2; -fx-text-fill: #b91c1c;
+                              -fx-background-radius: 8; -fx-padding: 12 16;
+                              -fx-border-color: #fecaca; -fx-border-radius: 8; -fx-font-size: 13;"/>
+
+                <!-- Delivery table card -->
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <TableView fx:id="deliveryTable" VBox.vgrow="ALWAYS" fixedCellSize="64"
+                               style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                      -fx-table-cell-border-color: transparent;">
+                        <columns>
+                            <TableColumn fx:id="colDelId"      text="Delivery ID" prefWidth="110" minWidth="90"/>
+                            <TableColumn fx:id="colDelOrder"   text="Order Ref"   prefWidth="100" minWidth="80"/>
+                            <TableColumn fx:id="colDelAddress" text="Address"     prefWidth="210" minWidth="140"/>
+                            <TableColumn fx:id="colDelDriver"  text="Driver"      prefWidth="130" minWidth="100"/>
+                            <TableColumn fx:id="colDelStatus"  text="Status"      prefWidth="130" minWidth="100" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colDelActions" text="Actions"     prefWidth="170" minWidth="150" style="-fx-alignment: CENTER;"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No deliveries yet. Click &quot;+ Create Delivery&quot; to get started."
+                                   style="-fx-text-fill: #717182; -fx-font-size: 13;"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Inventory Section ────────────────────────────────────── -->
+            <VBox fx:id="inventorySection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Inventory &amp; Warehousing"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="Manage warehouses, stock levels and reports"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Toggle buttons row -->
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Button fx:id="btnWarehousesTab" text="Warehouses"
+                            style="-fx-background-color: #030213; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 12; -fx-font-weight: bold;"/>
+                    <Button fx:id="btnStockTab" text="Stock"
+                            style="-fx-background-color: white; -fx-text-fill: #717182; -fx-border-color: #e6e6e6; -fx-border-radius: 8; -fx-padding: 8 20; -fx-cursor: hand; -fx-font-size: 12; -fx-font-weight: bold;"/>
+                    <Button fx:id="btnReportsTab" text="Reports"
+                            style="-fx-background-color: white; -fx-text-fill: #717182; -fx-border-color: #e6e6e6; -fx-border-radius: 8; -fx-padding: 8 20; -fx-cursor: hand; -fx-font-size: 12; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <Label fx:id="inventoryErrorLabel" visible="false" managed="false" wrapText="true"
+                       maxWidth="Infinity"
+                       style="-fx-background-color: #fef2f2; -fx-text-fill: #b91c1c;
+                              -fx-background-radius: 8; -fx-padding: 12 16;
+                              -fx-border-color: #fecaca; -fx-border-radius: 8; -fx-font-size: 13;"/>
+
+                <!-- Warehouses sub-view -->
+                <VBox fx:id="warehousesSubView" spacing="12" VBox.vgrow="ALWAYS">
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button fx:id="btnAddWarehouse" text="+ Add Warehouse"
+                                style="-fx-background-color: #030213; -fx-text-fill: white;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-padding: 10 22; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                    <VBox VBox.vgrow="ALWAYS"
+                          style="-fx-background-color: white; -fx-background-radius: 14;
+                                 -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                        <TableView fx:id="warehousesTable" VBox.vgrow="ALWAYS" fixedCellSize="52"
+                                   style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                          -fx-table-cell-border-color: transparent;">
+                            <columns>
+                                <TableColumn fx:id="colWhName"     text="Name"        prefWidth="160" minWidth="120"/>
+                                <TableColumn fx:id="colWhLocation" text="Location"     prefWidth="200" minWidth="140"/>
+                                <TableColumn fx:id="colWhContact"  text="Contact"      prefWidth="180" minWidth="120"/>
+                                <TableColumn fx:id="colWhCapacity" text="Capacity"     prefWidth="100" minWidth="80" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colWhUsed"     text="Used"         prefWidth="80"  minWidth="60" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colWhActions"  text="Actions"      prefWidth="140" minWidth="110" style="-fx-alignment: CENTER;"/>
+                            </columns>
+                            <placeholder><Label text="No warehouses yet. Click '+ Add Warehouse' to get started."
+                                               style="-fx-text-fill: #717182; -fx-font-size: 13;"/></placeholder>
+                        </TableView>
+                    </VBox>
+                </VBox>
+
+                <!-- Stock sub-view -->
+                <VBox fx:id="stockSubView" spacing="12" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <TextField fx:id="stockSearchField" promptText="Search product..."
+                                   prefHeight="36" HBox.hgrow="ALWAYS"
+                                   style="-fx-background-radius: 8; -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                          -fx-padding: 0 12; -fx-font-size: 12;"/>
+                        <ComboBox fx:id="stockWarehouseFilter" promptText="All Warehouses"
+                                  prefWidth="180" prefHeight="36"/>
+                        <CheckBox fx:id="lowStockOnlyCheck" text="Low Stock Only"
+                                  style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnAddStock" text="+ Assign Stock"
+                                style="-fx-background-color: #030213; -fx-text-fill: white;
+                                       -fx-font-size: 13; -fx-font-weight: bold;
+                                       -fx-padding: 10 22; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                    <VBox VBox.vgrow="ALWAYS"
+                          style="-fx-background-color: white; -fx-background-radius: 14;
+                                 -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                        <TableView fx:id="stockTable" VBox.vgrow="ALWAYS" fixedCellSize="52"
+                                   style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                          -fx-table-cell-border-color: transparent;">
+                            <columns>
+                                <TableColumn fx:id="colStProduct"   text="Product"    prefWidth="170" minWidth="120"/>
+                                <TableColumn fx:id="colStWarehouse" text="Warehouse"  prefWidth="140" minWidth="100"/>
+                                <TableColumn fx:id="colStQty"       text="Qty"        prefWidth="70"  minWidth="55" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colStMin"       text="Min Thresh" prefWidth="90"  minWidth="70" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colStRestock"   text="Last Restock" prefWidth="110" minWidth="90"/>
+                                <TableColumn fx:id="colStActions"   text="Actions"    prefWidth="200" minWidth="160" style="-fx-alignment: CENTER;"/>
+                            </columns>
+                            <placeholder><Label text="No stock records. Assign stock to warehouses to get started."
+                                               style="-fx-text-fill: #717182; -fx-font-size: 13;"/></placeholder>
+                        </TableView>
+                    </VBox>
+                </VBox>
+
+                <!-- Reports sub-view -->
+                <VBox fx:id="reportsSubView" spacing="12" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                    <HBox spacing="16" VBox.vgrow="ALWAYS">
+                        <!-- Total stock per product -->
+                        <VBox spacing="8" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                            <Label text="Total Stock per Product"
+                                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                            <VBox VBox.vgrow="ALWAYS"
+                                  style="-fx-background-color: white; -fx-background-radius: 14;
+                                         -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                                         -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                                <TableView fx:id="totalStockTable" VBox.vgrow="ALWAYS" fixedCellSize="46"
+                                           style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                                  -fx-table-cell-border-color: transparent;">
+                                    <columns>
+                                        <TableColumn fx:id="colRptProduct"    text="Product"       prefWidth="130" minWidth="100"/>
+                                        <TableColumn fx:id="colRptCategory"   text="Category"      prefWidth="110" minWidth="80"/>
+                                        <TableColumn fx:id="colRptWHQty"      text="WH Total"      prefWidth="80"  minWidth="60" style="-fx-alignment: CENTER;"/>
+                                        <TableColumn fx:id="colRptCatQty"     text="Catalogue"     prefWidth="80"  minWidth="60" style="-fx-alignment: CENTER;"/>
+                                        <TableColumn fx:id="colRptWHCount"    text="Warehouses"    prefWidth="80"  minWidth="60" style="-fx-alignment: CENTER;"/>
+                                    </columns>
+                                    <placeholder><Label text="No report data available."
+                                                       style="-fx-text-fill: #717182; -fx-font-size: 13;"/></placeholder>
+                                </TableView>
+                            </VBox>
+                        </VBox>
+                        <!-- Warehouse capacity -->
+                        <VBox spacing="8" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                            <Label text="Warehouse Capacity"
+                                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                            <VBox VBox.vgrow="ALWAYS"
+                                  style="-fx-background-color: white; -fx-background-radius: 14;
+                                         -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                                         -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                                <TableView fx:id="capacityTable" VBox.vgrow="ALWAYS" fixedCellSize="46"
+                                           style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                                  -fx-table-cell-border-color: transparent;">
+                                    <columns>
+                                        <TableColumn fx:id="colCapName"     text="Warehouse"   prefWidth="120" minWidth="90"/>
+                                        <TableColumn fx:id="colCapLocation" text="Location"    prefWidth="120" minWidth="90"/>
+                                        <TableColumn fx:id="colCapTotal"    text="Capacity"    prefWidth="80"  minWidth="60" style="-fx-alignment: CENTER;"/>
+                                        <TableColumn fx:id="colCapUsed"     text="Used"        prefWidth="70"  minWidth="55" style="-fx-alignment: CENTER;"/>
+                                        <TableColumn fx:id="colCapUtil"     text="Utilization" prefWidth="90"  minWidth="70" style="-fx-alignment: CENTER;"/>
+                                    </columns>
+                                    <placeholder><Label text="No warehouses yet."
+                                                       style="-fx-text-fill: #717182; -fx-font-size: 13;"/></placeholder>
+                                </TableView>
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Admin Reviews Section ────────────────────────────────── -->
+            <VBox fx:id="adminReviewsSection" visible="false" managed="false"
+                  spacing="16" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 28 32 24 32;">
+
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Reviews &amp; Ratings (Admin)"
+                               style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                        <Label text="Moderate customer reviews across all products"
+                               style="-fx-font-size: 13; -fx-text-fill: #717182;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Filter row -->
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <TextField fx:id="reviewSearchField" promptText="Search product or customer..."
+                               prefHeight="36" HBox.hgrow="ALWAYS"
+                               style="-fx-background-radius: 8; -fx-border-color: #e6e6e6; -fx-border-radius: 8;
+                                      -fx-padding: 0 12; -fx-font-size: 12;"/>
+                    <ComboBox fx:id="reviewRatingFilter" promptText="All Ratings"
+                              prefWidth="140" prefHeight="36"/>
+                    <CheckBox fx:id="flaggedOnlyCheck" text="Flagged Only"
+                              style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                </HBox>
+
+                <Label fx:id="adminReviewsErrorLabel" visible="false" managed="false" wrapText="true"
+                       maxWidth="Infinity"
+                       style="-fx-background-color: #fef2f2; -fx-text-fill: #b91c1c;
+                              -fx-background-radius: 8; -fx-padding: 12 16;
+                              -fx-border-color: #fecaca; -fx-border-radius: 8; -fx-font-size: 13;"/>
+
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.04),8,0,0,2);">
+                    <TableView fx:id="adminReviewsTable" VBox.vgrow="ALWAYS" fixedCellSize="58"
+                               style="-fx-background-color: transparent; -fx-background-radius: 14;
+                                      -fx-table-cell-border-color: transparent;">
+                        <columns>
+                            <TableColumn fx:id="colRevProduct"  text="Product"  prefWidth="150" minWidth="110"/>
+                            <TableColumn fx:id="colRevCustomer" text="Customer" prefWidth="150" minWidth="110"/>
+                            <TableColumn fx:id="colRevRating"   text="Rating"   prefWidth="90"  minWidth="70" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colRevComment"  text="Comment"  prefWidth="240" minWidth="160"/>
+                            <TableColumn fx:id="colRevDate"     text="Date"     prefWidth="100" minWidth="80"/>
+                            <TableColumn fx:id="colRevFlagged"  text="Flagged"  prefWidth="80"  minWidth="60" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colRevActions"  text="Actions"  prefWidth="160" minWidth="130" style="-fx-alignment: CENTER;"/>
+                        </columns>
+                        <placeholder><Label text="No reviews found."
+                                           style="-fx-text-fill: #717182; -fx-font-size: 13;"/></placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── Profile Section ──────────────────────────────────────── -->
+            <VBox fx:id="profileSection" visible="false" managed="false"
+                  spacing="20" maxWidth="Infinity" maxHeight="Infinity"
+                  style="-fx-background-color: #f0f4f8; -fx-padding: 32 36;">
+
+                <Label text="My Profile"
+                       style="-fx-font-size: 22; -fx-font-weight: bold;
+                              -fx-text-fill: #030213; -fx-padding: 0 0 4 0;"/>
+
+                <!-- Account Information card -->
+                <VBox spacing="0" maxWidth="460"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #e6e6e6; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
+                             -fx-padding: 28;">
+
+                    <Label text="Account Information"
+                           style="-fx-font-size: 13; -fx-font-weight: bold;
+                                  -fx-text-fill: #030213; -fx-padding: 0 0 16 0;"/>
+
+                    <HBox spacing="12"
+                          style="-fx-padding: 14 0; -fx-border-color: #ececf0; -fx-border-width: 0 0 1 0;">
+                        <Label text="Name" prefWidth="90"
+                               style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                        <Label fx:id="profileNameLabel" text=""
+                               style="-fx-font-size: 13; -fx-text-fill: #030213; -fx-font-weight: bold;"/>
+                    </HBox>
+
+                    <HBox spacing="12"
+                          style="-fx-padding: 14 0; -fx-border-color: #ececf0; -fx-border-width: 0 0 1 0;">
+                        <Label text="Email" prefWidth="90"
+                               style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                        <Label fx:id="profileEmailLabel" text=""
+                               style="-fx-font-size: 13; -fx-text-fill: #030213;"/>
+                    </HBox>
+
+                    <HBox spacing="12" style="-fx-padding: 14 0;">
+                        <Label text="Role" prefWidth="90"
+                               style="-fx-font-size: 12; -fx-text-fill: #717182;"/>
+                        <Label text="Administrator"
+                               style="-fx-font-size: 11; -fx-text-fill: white;
+                                      -fx-background-color: #030213; -fx-background-radius: 20;
+                                      -fx-padding: 3 14;"/>
+                    </HBox>
+
+                </VBox>
+
+                <!-- Danger Zone card -->
+                <VBox spacing="0" maxWidth="460"
+                      style="-fx-background-color: white; -fx-background-radius: 14;
+                             -fx-border-color: #fecaca; -fx-border-radius: 14;
+                             -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
+                             -fx-padding: 28;">
+                    <Label text="Danger Zone"
+                           style="-fx-font-size: 13; -fx-font-weight: bold;
+                                  -fx-text-fill: #d4183d; -fx-padding: 0 0 16 0;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="16">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Delete Account"
+                                   style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #030213;"/>
+                            <Label text="Permanently delete your account and all associated data. This action cannot be undone."
+                                   style="-fx-font-size: 12; -fx-text-fill: #717182;"
+                                   wrapText="true" maxWidth="280"/>
+                        </VBox>
+                        <Button text="Delete" onAction="#handleDeleteAccount"
+                                style="-fx-background-color: #d4183d; -fx-text-fill: white;
+                                       -fx-font-size: 12; -fx-font-weight: bold;
+                                       -fx-padding: 9 18; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+        </StackPane>
+    </center>
+
+</BorderPane>

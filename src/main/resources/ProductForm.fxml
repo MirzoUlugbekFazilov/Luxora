@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox fx:id="rootVBox" prefWidth="600" prefHeight="680"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Luxora.Luxora.ProductFormController"
+      style="-fx-background-color: white;">
+
+    <!-- ═══ DIALOG HEADER ════════════════════════════════════════════════════ -->
+    <HBox prefHeight="56" alignment="CENTER_LEFT"
+          style="-fx-padding: 0 24; -fx-border-color: #e2e8f0; -fx-border-width: 0 0 1 0;">
+        <Label fx:id="formTitle" text="Add New Product"
+               style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="✕" onAction="#handleCancel"
+                style="-fx-background-color: transparent; -fx-text-fill: #6b7280;
+                       -fx-font-size: 16; -fx-cursor: hand; -fx-padding: 4 8;"/>
+    </HBox>
+
+    <!-- ═══ SCROLLABLE BODY ══════════════════════════════════════════════════ -->
+    <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true"
+                style="-fx-background-color: white; -fx-background: white; -fx-border-width: 0;">
+        <VBox spacing="20" style="-fx-padding: 24 28 20 28; -fx-background-color: white;">
+
+            <!-- Product Name -->
+            <VBox spacing="6">
+                <Label text="Product Name *"
+                       style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                <TextField fx:id="nameField" promptText=""
+                           prefHeight="40"
+                           style="-fx-background-color: #f3f4f6; -fx-background-radius: 8;
+                                  -fx-border-color: transparent; -fx-border-radius: 8;
+                                  -fx-padding: 0 14; -fx-font-size: 13;"/>
+            </VBox>
+
+            <!-- Categories -->
+            <VBox spacing="10">
+                <Label text="Categories *"
+                       style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                <GridPane hgap="16" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+                    <CheckBox fx:id="cbElectronics"  text="Electronics"            GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbFashion"      text="Fashion"                GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbHomeLiving"   text="Home &amp; Living"      GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbBeauty"       text="Beauty &amp; Personal Care" GridPane.rowIndex="1" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbSports"       text="Sports &amp; Outdoors"  GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbToysKids"     text="Toys &amp; Kids"        GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbBooksMedia"   text="Books &amp; Media"      GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbGroceries"    text="Groceries &amp; Food"   GridPane.rowIndex="3" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbHealth"       text="Health &amp; Wellness"  GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbAutomotive"   text="Automotive"             GridPane.rowIndex="4" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbOffice"       text="Office &amp; Stationery" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbPetSupplies"  text="Pet Supplies"           GridPane.rowIndex="5" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbTools"        text="Tools &amp; Hardware"   GridPane.rowIndex="6" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbJewelry"      text="Jewelry &amp; Accessories" GridPane.rowIndex="6" GridPane.columnIndex="1" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                    <CheckBox fx:id="cbTravel"       text="Travel &amp; Luggage"   GridPane.rowIndex="7" GridPane.columnIndex="0" style="-fx-font-size: 12; -fx-text-fill: #374151;"/>
+                </GridPane>
+
+                <!-- Custom category (session-only, not universal) -->
+                <HBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 6 0 0 0;">
+                    <TextField fx:id="customCategoryField" promptText="Add custom category..."
+                               prefHeight="34" HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: #f3f4f6; -fx-background-radius: 8;
+                                      -fx-border-color: transparent; -fx-border-radius: 8;
+                                      -fx-padding: 0 12; -fx-font-size: 12;"/>
+                    <Button text="+ Add" onAction="#handleAddCustomCategory"
+                            style="-fx-background-color: #0f172a; -fx-text-fill: white;
+                                   -fx-background-radius: 8; -fx-padding: 7 16;
+                                   -fx-font-size: 12; -fx-cursor: hand;"/>
+                </HBox>
+                <FlowPane fx:id="customCategoriesPane" hgap="10" vgap="6"/>
+            </VBox>
+
+            <!-- Description -->
+            <VBox spacing="6">
+                <Label text="Description"
+                       style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                <TextArea fx:id="descriptionField" promptText=""
+                          prefRowCount="3" prefHeight="90"
+                          style="-fx-background-color: #f3f4f6; -fx-background-radius: 8;
+                                 -fx-border-color: transparent; -fx-border-radius: 8;
+                                 -fx-padding: 10 14; -fx-font-size: 13;"
+                          wrapText="true"/>
+            </VBox>
+
+            <!-- Price + Stock side by side -->
+            <HBox spacing="16">
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label text="Price ($) *"
+                           style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="priceField" promptText="0.00" prefHeight="40"
+                               style="-fx-background-color: #f3f4f6; -fx-background-radius: 8;
+                                      -fx-border-color: transparent; -fx-border-radius: 8;
+                                      -fx-padding: 0 14; -fx-font-size: 13;"/>
+                </VBox>
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label text="Stock Quantity *"
+                           style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="quantityField" promptText="0" prefHeight="40"
+                               style="-fx-background-color: #f3f4f6; -fx-background-radius: 8;
+                                      -fx-border-color: transparent; -fx-border-radius: 8;
+                                      -fx-padding: 0 14; -fx-font-size: 13;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Status -->
+            <VBox spacing="6">
+                <Label text="Status"
+                       style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                <ComboBox fx:id="statusCombo" prefWidth="Infinity" prefHeight="40"
+                          style="-fx-background-radius: 8; -fx-font-size: 13;"/>
+            </VBox>
+
+            <!-- Product Images -->
+            <VBox spacing="8">
+                <Label text="Product Images"
+                       style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+
+                <!-- Drop zone -->
+                <VBox fx:id="dropZone" alignment="CENTER" spacing="6" prefHeight="130"
+                      style="-fx-border-color: #d1d5db; -fx-border-style: dashed;
+                             -fx-border-width: 2; -fx-border-radius: 10;
+                             -fx-background-color: white; -fx-background-radius: 10;
+                             -fx-cursor: hand; -fx-padding: 20;">
+                    <Label text="⬆" style="-fx-font-size: 26; -fx-text-fill: #9ca3af;"/>
+                    <Label text="Add Image"
+                           style="-fx-font-size: 13; -fx-text-fill: #9ca3af;"/>
+                </VBox>
+
+                <!-- Thumbnails -->
+                <ScrollPane prefHeight="110" fitToWidth="true"
+                            style="-fx-background: transparent; -fx-background-color: transparent;
+                                   -fx-border-width: 0;">
+                    <FlowPane fx:id="thumbnailPane" hgap="8" vgap="8" prefWrapLength="530"
+                              style="-fx-padding: 4;"/>
+                </ScrollPane>
+
+                <Label fx:id="imageErrorLabel" text=""
+                       style="-fx-text-fill: #e11d48; -fx-font-size: 11;" wrapText="true"/>
+            </VBox>
+
+            <!-- Form error -->
+            <Label fx:id="formErrorLabel" text=""
+                   style="-fx-text-fill: #e11d48; -fx-font-size: 12;" wrapText="true"/>
+
+            <!-- Footer buttons -->
+            <HBox spacing="12" alignment="CENTER_RIGHT" style="-fx-padding: 4 0 0 0;">
+                <Button fx:id="saveBtn" text="Add Product" onAction="#handleSave"
+                        HBox.hgrow="ALWAYS" maxWidth="Infinity"
+                        style="-fx-background-color: #0f172a; -fx-text-fill: white;
+                               -fx-background-radius: 8; -fx-padding: 11 0;
+                               -fx-font-size: 14; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                <Button text="Cancel" onAction="#handleCancel"
+                        style="-fx-background-color: transparent; -fx-text-fill: #6b7280;
+                               -fx-border-color: transparent; -fx-background-radius: 8;
+                               -fx-padding: 11 22; -fx-font-size: 14; -fx-cursor: hand;"/>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+
+</VBox>
