@@ -1,6 +1,6 @@
  # Luxora — E-Commerce Desktop Application                             
                                                                          
-  A JavaFX desktop application simulating a full e-commerce platform with
+  A JavaFX desktop full-stack e-commerce application with
    role-based access for Customers, Product Managers, and Admins.        
                                                                          
   ## Features                                                            
