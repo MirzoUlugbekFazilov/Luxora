@@ -5,7 +5,7 @@
                                                                                        
   ## Demo                                                                              
 
-  [![Luxora Demo](https://img.youtube.com/vi/elrbD-SUVYE/maxresdefault.jpg)](https://ww
+  [!Luxora Demo](https://img.youtube.com/vi/elrbD-SUVYE/maxresdefault.jpg)(Full Application video: https://ww
   w.youtube.com/watch?v=elrbD-SUVYE)
                                                                                        
   ## Features                                                                          
