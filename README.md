@@ -10,10 +10,9 @@
       <img src="https://img.youtube.com/vi/elrbD-SUVYE/maxresdefault.jpg"           
   alt="Luxora Demo Video" width="680"/>                                             
     </a>                                                                            
-                                                                                    
-    <br/>                                                                           
+                                                                                  
 
-    **Full video:** [Watch on YouTube](https://www.youtube.com/watch?v=elrbD-SUVYE) 
+    **Full Application video:** [Watch on YouTube](https://www.youtube.com/watch?v=elrbD-SUVYE) 
   </div>
                                                                                     
   ## Features                                                                       
