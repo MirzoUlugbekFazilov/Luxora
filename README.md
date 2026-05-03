@@ -12,7 +12,7 @@
     </a>                                                                            
                                                                                   
 
-    **Full Application video:** [Watch on YouTube](https://www.youtube.com/watch?v=elrbD-SUVYE) 
+    Full Application video: https://www.youtube.com/watch?v=elrbD-SUVYE) 
   </div>
                                                                                     
   ## Features                                                                       
